@@ -381,7 +381,7 @@ public class FormShowWriter extends FormDataWriter {
 	public Hashtable getAuditFields(Hashtable ht) {
 		
 		
-		debug("FormShowWriter.getAuditFields... added_by");
+		//debug("FormShowWriter.getAuditFields... added_by");
 
 		String[][] reviewedChoices = { { "Y", "P", "R" },
 				{ "Passed", "Pending", "Rejected" } };
@@ -393,12 +393,12 @@ public class FormShowWriter extends FormDataWriter {
 		debug("FormShowWriter.getAuditFields... updated_by");
 		
 		if (plugin.getIsUpdated()) {
-			debug("FormShowWriter.getAuditFields... its updated");
+			//debug("FormShowWriter.getAuditFields... its updated");
 			ht.put("updated_by", new WebFieldDisplay("updated_by", plugin
 					.getText("updated_by")
 					+ "&nbsp;on&nbsp;" + plugin.getText("updated_date")));
 		} else {
-			debug("FormShowWriter.getAuditFields... not updated");
+			//debug("FormShowWriter.getAuditFields... not updated");
 			ht.put("updated_by", new WebFieldDisplay("updated_by", ""));
 		}
 
@@ -413,7 +413,7 @@ public class FormShowWriter extends FormDataWriter {
 		//debug("FormShowWriter: getAuditFields");
 
 		if (plugin.getIsSubmitted()) {
-			debug("FormShowWriter: isSubmittted = true");
+			//debug("FormShowWriter: isSubmittted = true");
 			
 			ht.put("submitted_tag", new WebFieldDisplay("submitted_tag",
 					"Submitted By:"));

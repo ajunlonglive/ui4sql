@@ -109,12 +109,12 @@ public class UsagePlugin extends AbsApplicationPlugin {
 				"tproject.project_name" });
 
 		// 9/29 transform....
-		if (false)
-			this.setMoreSelectJoins (new String[] {
-					" left join tmodule on tusage.module_id = tmodule.module_id ",
-					" left join tapplications on tmodule.application_id = tapplications.application_id ",
-					" left join tproject on tusage.project_id = tproject.project_id ",
-					" left join tcodes kind on tusage.type_cd = kind.code_value and kind.code_type_id =  64 " });
+		//if (false)
+		//	this.setMoreSelectJoins (new String[] {
+			//		" left join tmodule on tusage.module_id = tmodule.module_id ",
+			//		" left join tapplications on tmodule.application_id = tapplications.application_id ",
+			//		" left join tproject on tusage.project_id = tproject.project_id ",
+			//		" left join tcodes kind on tusage.type_cd = kind.code_value and kind.code_type_id =  64 " });
 
 		this.moreSelectJoins = getSelectJoins(figureOutType().charAt(0));
 

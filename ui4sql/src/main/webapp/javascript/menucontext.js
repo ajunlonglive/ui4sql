@@ -83,15 +83,18 @@ function showToolbar()
 	menu.addSubItem("business", "Work Flows", "Work Flows","Router?Target=Workflow&Action=List", "");
 	
 	menu.addSubItem("system", "Applications", "Applications","Router?Target=Application&Action=List", "");
+	menu.addSubItem("system", "Architecture", "Architecture","Router?Target=Architecture&Action=List", "");
 	menu.addSubItem("system", "User Interface", "User Interface","Router?Target=Gui&Action=List", "");
-	menu.addSubItem("system", "Databases", "Databases","Router?Target=Database&Action=List", "");
-	menu.addSubItem("system", "Elements", "Elements","Router?Target=Element&Action=List", "");	menu.addSubItem("system", "Messages", "HL7 Messages","Router?Target=Message&Action=List", "");
+	menu.addSubItem("system", "Databases", "Databases","Router?Target=Database&Action=List", "");	
+	menu.addSubItem("system", "Messages", "HL7 Messages","Router?Target=Message&Action=List", "");
+	menu.addSubItem("system", "Files", "Files","Router?Target=File&Action=List", "");
 	menu.addSubItem("system", "Reports", "Reports","Router?Target=Report&Action=List", "");
 	
 	menu.addSubItem("testing", "Test Cases", "Test Cases ","Router?Target=Testcase&Action=List", "");
 	menu.addSubItem("testing", "Test Cycles", "Test Cycles","Router?Target=Cycle&Action=List", "");
 	menu.addSubItem("testing", "Defects", "Defects","Router?Target=Defect&Action=List", "");
 	menu.addSubItem("testing", "Environments", "Environments","Router?Target=Environment&Action=List", "");
+	menu.addSubItem("testing", "Patients", "Patients",  "Router?Target=Patient&Action=List", "");
 	menu.addSubItem("testing", "Express Test", "Express Test Request","Router?Target=X&Action=List", "");
 	menu.addSubItem("testing", "Request", "Test Request","Router?Target=Test&Action=List", "");
 	menu.addSubItem("testing", "Test Plan", "Test Plan","Router?Target=TestPlan&Action=List", "");

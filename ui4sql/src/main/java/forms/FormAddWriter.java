@@ -85,7 +85,7 @@ public class FormAddWriter extends FormDataWriter {
 		 * to the list .. same code is in the FormShowWriter and FormEditWritter
 		 */
 
-		Enumeration e = sm.getParmeterNames();
+		Enumeration<String> e =  sm.getParmeterNames();
 
 		while (e.hasMoreElements()) {
 			String filterName = (String) e.nextElement();

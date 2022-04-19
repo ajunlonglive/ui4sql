@@ -16,7 +16,7 @@ import javax.servlet.ServletConfig;
 
 import plugins.Plugin;
 
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
 
 import router.SessionMgr;
 import forms.*;
@@ -427,7 +427,7 @@ public class Router extends HttpServlet implements javax.servlet.Servlet {
 	}
 
 	public void debug(String debugMsg) {
-		Logger.getLogger("ui4sql").debug(debugMsg);
+		//Logger.getLogger("ui4sql").debug(debugMsg);
 		if (true) {
 			System.out.println("Router: " + debugMsg);
 		}

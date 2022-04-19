@@ -1658,7 +1658,7 @@ public class RfcPlugin extends AbsDivisionPlugin {
 		}
 
 		// filter Suite status
-		if (true || this.ncf_cab) {
+		if ( this.ncf_cab) {
 
 			if ((!sm.Parm("FilterReviewFCAB").equalsIgnoreCase("0"))
 					&& (sm.Parm("FilterReviewFCAB").length() != 0)) {

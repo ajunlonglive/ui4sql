@@ -148,7 +148,7 @@
 		p:listViewName="vexposure_list" p:selectViewName="vexposure"
 		p:showAuditSubmitApprove="false"
 		p:hasDetailForm="true" p:detailTarget="Control"
-		p:targetTitle="Exposures2" p:detailTargetLabel="Controls"
+		p:targetTitle="Exposures (Example using an XML Bean File)" p:detailTargetLabel="Controls"
 		p:listHeaders="Reference, Title, Type, Amount (000s),
 				Chance (%), Expected Loss, Status"
 		p:beanList-ref="beanList" />

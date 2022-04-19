@@ -1898,7 +1898,7 @@ public abstract class Plugin {
 
 		Hashtable<String, DbField> ht = new Hashtable<String, DbField>();
 
-		Enumeration en = sm.getRequestParmNames();
+		Enumeration<String> en = sm.getRequestParmNames();
 
 		while (en.hasMoreElements()) {
 

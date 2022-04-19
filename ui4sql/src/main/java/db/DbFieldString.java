@@ -23,17 +23,21 @@ public class DbFieldString extends DbField {
 	// 1 parm
 	public DbFieldString(String parmName) {
 		super(parmName, new String(""));
+		//System.out.println("DBFieldString constructor 1 - " + parmName);
 	}
 
 	// 2 parms
 	public DbFieldString(String parmName, String parmValue) {
 		super(parmName, parmValue);
-		//System.out.println("DbFieldString:init : " + parmValue);
+		//System.out.println("DbFieldString constructor 2 : " + parmName + " value " + parmValue);
 	}
 
 	// 3 parms
 	public DbFieldString(String parmName, String parmFormName, String parmValue) {
+		
 		super(parmName, parmFormName, parmValue);
+		//System.out.println("DbFieldString constructor 3 : " + parmName + " value " + parmValue + " form: " + parmFormName);
+		
 	}
 
 	// ****************************
@@ -41,11 +45,14 @@ public class DbFieldString extends DbField {
 	// ****************************
 
 	public String getText() {
+		
+		//System.out.print("dbFieldString:getText:");
 
 		try {
 			if (fieldValue != null) {
 				return (String) fieldValue;
 			} else {
+				
 				return new String("");
 			}
 		} catch (Exception e) {

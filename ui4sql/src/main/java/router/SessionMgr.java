@@ -104,7 +104,7 @@ public class SessionMgr {
 
 	private String concat = "concat"; // "concat"
 
-	private boolean debug = false;
+	private boolean debug = true;
 
 	public boolean userFound = false;
 

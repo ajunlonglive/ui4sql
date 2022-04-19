@@ -223,7 +223,7 @@ public class AdhocPlugin extends AbsDivisionPlugin {
 
 		// sb.append(" AND tadhoc.region_cd = 'NCAL'");
 
-		if (true || sm.Parm("FilterRegion").length() == 0) {
+		if (sm.Parm("FilterRegion").length() == 0) {
 			// sb.append(" AND tadhoc.region_cd = 'NCAL'");
 		}
 

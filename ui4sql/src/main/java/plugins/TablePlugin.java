@@ -28,8 +28,8 @@ public class TablePlugin extends AbsApplicationPlugin {
 		super();
 		this.setTableName("ttable");
 		this.setKeyName("table_id");
-		this.setListHeaders(new String[] { "Database", "Table", "Reference",
-				"Version", "Status", "Project" });
+		this.setListHeaders(new String[] { "Table", "Database",
+				"Version", "Status" });
 		this.setTargetTitle("Table");
 
 		this.setIsDetailForm(true);
@@ -40,21 +40,32 @@ public class TablePlugin extends AbsApplicationPlugin {
 		this.setDetailTargetLabel("Elements");
 
 		this.setMoreListColumns(new String[] {
-				"tdatabase.title_nm as DatabaseName",
-				"ttable.title_nm as TableName", "ttable.reference_nm",
-				"ttable.version_id", "s.code_desc as status_desc",
-				"project_name" });
+				"ttable.reference_nm as thereferrence_nm",
+				"tdatabase.title_nm as database_nm",
+				"ttable.version_id", 
+				"s.code_desc as status_desc" });
 
 		this
 				.setMoreSelectJoins(new String[] { " join tdatabase on ttable.database_id = tdatabase.database_id " });
 
 		this
-				.setMoreSelectColumns(new String[] { "tdatabase.title_nm as databaseName " });
+				.setMoreSelectColumns(new String[] { "tdatabase.title_nm as db_nm " });
 
 	}
+	
+	// "tdatabase.title_nm as database_nm",
+	
 
 	// need to set moreListJoins in the init() method because we need the sm
 	// .. which is not available in the constructor
+	
+	
+	// called on the Show page, when returning to the list page
+	public Integer getParentKey() {
+
+		return db.getInteger("database_id");
+	}
+	
 
 	public void init(SessionMgr parmSm) {
 		sm = parmSm;
@@ -68,8 +79,7 @@ public class TablePlugin extends AbsApplicationPlugin {
 										.equalsIgnoreCase("0")) ? ""
 								: " and tdatabase.database_id ="
 										+ sm.Parm("FilterDatabase")),
-				" left join tcodes s on ttable.status_cd = s.code_value and s.code_type_id  = 60 ",
-				" left join tproject on ttable.project_id = tproject.project_id " });
+				" left join tcodes s on ttable.status_cd = s.code_value and s.code_type_id  = 60 " });
 
 	}
 
@@ -92,7 +102,7 @@ public class TablePlugin extends AbsApplicationPlugin {
 
 	public boolean listColumnHasSelector(int columnNumber) {
 		// column 0 = message id, 4 = status
-		if (columnNumber == 0 || columnNumber == 4)
+		if (columnNumber ==  3 || columnNumber == 3)
 			return true;
 		else
 			return false;
@@ -101,9 +111,9 @@ public class TablePlugin extends AbsApplicationPlugin {
 	public WebField getListSelector(int columnNumber) {
 
 		switch (columnNumber) {
-		case 0: {
+		case 10: {
 
-			String sQuery = "Select title_nm, database_id, title_nm from tdatabase where application_id = "
+			String sQuery = "Select title_nm, database_id, title_nm as the_title_nm from tdatabase where application_id = "
 					+ sm.getApplicationId().toString();
 
 			return new WebFieldSelect("FilterDatabase", sm.Parm(
@@ -156,26 +166,23 @@ public class TablePlugin extends AbsApplicationPlugin {
 		// FilterDatabase parm.
 		WebFieldDisplay wfDatabaseName;
 		if (addMode) {
-			debug("getting datbase name");
-
+	
 			String query = " select title_nm from tdatabase where database_id = "
 					+ sm.Parm("FilterDatabase");
 
-			debug("query : " + query);
 			String answer = db.getColumn(query);
-			wfDatabaseName = new WebFieldDisplay("databaseName", answer);
-			debug(" answer : " + answer);
+			
+			debug ( " query is : " + query + " database is : " + answer);
+			
+			wfDatabaseName = new WebFieldDisplay("db_nm", answer);
+
 		} else {
-			wfDatabaseName = new WebFieldDisplay("databaseName", db
-					.getText("databaseName"));
+			
+			wfDatabaseName = new WebFieldDisplay("db_nm", db
+					.getText("db_nm"));
 		}
 
-		/*
-		 * Ids
-		 */
-		WebFieldSelect wfProject = new WebFieldSelect("project_id",
-				addMode ? sm.getProjectId() : (Integer) db
-						.getObject("project_id"), sm.getProjectFilter(), true);
+
 
 		/*
 		 * Codes
@@ -219,7 +226,7 @@ public class TablePlugin extends AbsApplicationPlugin {
 		 */
 
 		WebField[] wfs = { wfDesc, wfTitle, wfStatus, wfRefr, wfNotes,
-				wfVersion, wfVersionNo, wfDatabaseName, wfProject, wfUsage,
+				wfVersion, wfVersionNo, wfDatabaseName, wfUsage,
 				wfSize };
 
 		return webFieldsToHT(wfs);

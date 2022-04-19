@@ -43,7 +43,14 @@ public class PMOBeanFactory {
 		/*
 		 * using ClassPathResource..
 		 */
-		System.out.println("locating bean in classpath!");
+		
+		
+		String location = new String("beans/" + pluginName + ".xml");
+		
+		System.out.println("locating bean in classpath - " + location);
+		
+		
+		
 		
 		BeanFactory bf = new XmlBeanFactory(
                  new ClassPathResource("beans/" + pluginName + ".xml"));

@@ -21,6 +21,10 @@ import java.text.SimpleDateFormat;
 /**
  * @author Arne Paulsen
  * 
+ * 		4/15/21 - Huge fix to retrive the 'getColumnLabel' instead of getColumnName' for query ' select field AS label';
+ * 			something must have changed in JDBC as the getColumnName returns the specific database column, not the  'field AS name'
+ *  
+ * 
  *         4/3/07 caution .. make Resultset public so can call directly
  * 
  * 
@@ -64,7 +68,7 @@ public class DbInterface {
 
 	public ResultSet ourRS;
 
-	public boolean debug = false;
+	public boolean debug = true;
 
 	public String dbProduct = "";
 
@@ -703,7 +707,9 @@ public class DbInterface {
 				// debug(" done building the empty dbField[] ht");
 				// create a DbField for each column in the row
 				for (int x = 0; x < rsmd.getColumnCount(); x++) {
-					dbFields[x] = getDbField(rs, rsmd.getColumnName(x + 1));
+					//dbFields[x] = getDbField(rs, rsmd.getColumnName(x + 1));
+					dbFields[x] = getDbField(rs, rsmd.getColumnLabel(x + 1));
+					//debug (" medata field : " + rsmd.getColumnLabel(x + 1));
 				}
 				htKey++;
 			
@@ -874,9 +880,8 @@ public class DbInterface {
 			if (myRS.next() == true) {
 				// for (int x = 0; x < selectColumns.length; x++) {
 				for (int x = 1; x < columnCount + 1; x++) {
-					// debug(" gettig column name for column # " + x);
-					String columnName = new String(rsmd.getColumnName(x));
-					// debug("calling setField for " + columnName);
+					String columnName = new String(rsmd.getColumnLabel(x));
+					//debug("calling setField for " + columnName);
 					// setField(myRS, selectColumns[x]);
 					setField(myRS, columnName);
 					// debug("setField done ");
@@ -974,8 +979,6 @@ public class DbInterface {
 
 	// return a rs from a query string
 	public ResultSet getRS(String parmQuery) throws ServicesException {
-
-		debug("DbInterface:getRS - " + parmQuery);
 
 		Statement stmt;
 		ResultSet rs = null;
@@ -1122,7 +1125,7 @@ public class DbInterface {
 		// Logger.getLogger("ui4sql").debug("DbInterface: " + debugMsg);
 
 
-		//System.out.println(debugMsg);
+		System.out.println(debugMsg);
 	}
 
 }

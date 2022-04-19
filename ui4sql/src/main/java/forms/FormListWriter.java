@@ -462,8 +462,6 @@ public class FormListWriter extends FormDataWriter {
 			width = (plugin.getListColumnWidth(x-2).length() > 0 ) ? " WIDTH=\"" + plugin.getListColumnWidth(x-2) + "\"" : "";
 
 
-			//debug("width : " + plugin.getListColumnWidth(x - 2));
-
 			out.println("<TD " + align + color + width +  ">" + fields[x].getText()
 					+ "</TD>");
 

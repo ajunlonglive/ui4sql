@@ -166,7 +166,7 @@ public abstract class FormDataWriter extends FormWriter {
 		 * Add the button anchors to the webFields, then they get put in the form
 		 */
 
-		debug("getting buttons");
+		//debug("getting buttons");
 
 		String buttons = getButtons();
 
@@ -174,7 +174,7 @@ public abstract class FormDataWriter extends FormWriter {
 			webFields.put("buttons", new WebFieldDisplay("buttons", buttons));
 		}
 
-		debug ("  the buttons .. " + buttons);
+		//debug ("  the buttons .. " + buttons);
 
 		try {
 

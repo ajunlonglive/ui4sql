@@ -177,14 +177,11 @@ public class AttachmentPlugin extends AbsDivisionPlugin {
 		 * 
 		 */
 
-		// String deliverQuery = ("Select title_nm as odor, deliverable_id,
-		// title_nm from tdeliverable where project_id = " + sm
-		// .getProjectId().toString());
+		String deliverQuery = ("Select title_nm as odor, deliverable_id,title_nm from tdeliverable where project_id = " + sm.getProjectId().toString());
 
-		// Hashtable ht = db.getLookupTable(deliverQuery);
+		Hashtable ht = db.getLookupTable(deliverQuery);
 		// skip this for now.. only using attachments for SBAR, not delive
-		// if (ht.size() == 0 && false) {
-		if (false) {
+		if (ht.size() == 0 ) {
 			ok_to_save = false;
 			errorMessage = "There are no deliverables for this project.";
 			wfMessage = new WebFieldDisplay("message", errorMessage);

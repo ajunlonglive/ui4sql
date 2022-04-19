@@ -78,7 +78,7 @@
 
 	<context-param>
 		<param-name>Templates-path</param-name>
-		<param-value>192.168.1.140:8082/ui4sql/templates/</param-value>
+		<param-value>localhost:8080/ui4sql/templates/</param-value>
 	</context-param>
 	
 	<!---    from url like  192.168.1.140:8082/ui4sql/templates/   -->

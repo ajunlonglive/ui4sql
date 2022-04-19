@@ -24,7 +24,7 @@ import java.util.MissingResourceException;
 
 public class ApplicationProperties extends Properties
 {
-	private static Map instanceMap             = new HashMap(10);
+	private static Map<String, ApplicationProperties> instanceMap             = new HashMap<String, ApplicationProperties>(10);
 
 	private String propertyFileID;
 
@@ -54,7 +54,7 @@ public class ApplicationProperties extends Properties
 
 		//System.out.println("temp id : " + propertyFileID);
 		
-		ApplicationProperties tempInstance = (ApplicationProperties) instanceMap.get(propertyFileID);
+		ApplicationProperties tempInstance = instanceMap.get(propertyFileID);
 		
 		//System.out.println("looking for properties :  " +  "properties." + propertyFileID + "_application");
 				
@@ -65,7 +65,7 @@ public class ApplicationProperties extends Properties
 
 			PropertyResourceBundle resourceBundle = (PropertyResourceBundle)ResourceBundle.getBundle("properties." + propertyFileID + "_application");           
 
-			Enumeration keys = resourceBundle.getKeys();
+			Enumeration<String> keys = resourceBundle.getKeys();
 
 			while (keys.hasMoreElements())
 			{
@@ -129,12 +129,12 @@ public class ApplicationProperties extends Properties
 		return Integer.parseInt(val);
 	}
 
-	public List getPropertyAsList(String propertyName)
+	public List<String> getPropertyAsList(String propertyName)
 	{
 
 		String[] array = getPropertyAsArray(propertyName);
 
-		List list = new ArrayList(array.length);
+		List<String> list = new ArrayList<String>(array.length);
 
 		for (int i=0; i<array.length; i++)
 		{
